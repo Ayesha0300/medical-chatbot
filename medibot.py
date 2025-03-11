@@ -184,3 +184,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Ensure Streamlit server runs
+    st._is_running_with_streamlit = True

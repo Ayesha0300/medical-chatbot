@@ -1,4 +1,5 @@
 numpy<2
 langchain-huggingface<=0.1.2
 torch==2.0.0
+streamlit
 
