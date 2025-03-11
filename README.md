@@ -1,44 +1,49 @@
-# Medical Chatbot
+# MediAI Assistant
 
-Welcome to the Medical Chatbot project! This chatbot utilizes advanced AI models to assist users with medical-related queries. The backend is powered by LangChain and Hugging Face models, while the frontend is built using Streamlit.
+## Overview
+MediAI Assistant is an intelligent medical knowledge assistant that helps manage and query medical documentation.
 
-## Prerequisites
+## Installation
 
-Ensure you have `UV` installed before proceeding. If you haven't installed `UV` yet, follow the official installation guide:
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/yourusername/medical-chatbot.git
+    cd medical-chatbot
+    ```
 
-- [UV Documentation](https://install.uv/docs/)
+2. Create and activate a virtual environment using `uv`:
+    ```sh
+    uv venv
+    ```
 
-## Setting Up Your Environment with UV
+3. Synchronize dependencies:
+    ```sh
+    uv sync
+    ```
 
-### Step 1: Install Required Packages
+## Usage
 
-Run the following commands in your terminal to set up the environment and install dependencies:
+1. Run the Chainlit server:
+    ```sh
+    chainlit run medibot.py
+    ```
 
-```sh
-uv pip install langchain langchain_community langchain_huggingface faiss-cpu pypdf
-uv pip install huggingface_hub
-uv pip install streamlit
-```
+2. Open your web browser and go to `http://localhost:8000` to access the MediAI Assistant.
 
-## Running the Chatbot
+## Features
 
-Once dependencies are installed, you can start the chatbot with:
+- **Document Management**: Upload and process medical documents.
+- **Chat Assistant**: Query the knowledge base using a chatbot interface.
+- **Knowledge Base**: Analyze and inspect the vector store.
+- **About**: Information about the MediAI Assistant.
 
-```sh
-streamlit run app.py
-```
+## Configuration
 
-This will launch the chatbot interface in your web browser.
-
-## Contributing
-
-Contributions are welcome! Feel free to submit issues or pull requests to improve the chatbot.
+Ensure you have a `.env` file with the necessary environment variables, such as `HF_TOKEN`.
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
----
+This project is licensed under the MIT License.
 
 For any questions or suggestions, please open an issue on the [GitHub repository](https://github.com/Ayesha0300/medical-chatbot).
 
