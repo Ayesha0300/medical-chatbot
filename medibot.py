@@ -12,6 +12,7 @@ from huggingface_hub import InferenceClient
 from dotenv import load_dotenv, find_dotenv
 
 DB_FAISS_PATH = "vectorstore/db_faiss"
+
 def get_vectorstore():
     embedding_model = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
     db = FAISS.load_local(DB_FAISS_PATH, embedding_model, allow_dangerous_deserialization=True)
@@ -23,6 +24,17 @@ def set_custom_prompt(custom_prompt_template):
 def load_llm(huggingface_repo_id, HF_TOKEN):
     client = InferenceClient(token=HF_TOKEN)
     return client
+
+def load_all_data_files(directory):
+    pdf_folder = ensure_pdf_directory()
+    for filename in os.listdir(directory):
+        if filename.endswith('.pdf'):
+            save_path = os.path.join(pdf_folder, filename)
+            with open(save_path, "wb") as wf:
+                with open(os.path.join(directory, filename), "rb") as f:
+                    wf.write(f.read())
+            print(f"Loaded and saved: {filename}")
+    process_and_store()
 
 @cl.on_message
 async def on_message(message):
@@ -49,6 +61,7 @@ async def on_message(message):
 
 def main():
     load_dotenv(find_dotenv())
+    load_all_data_files("path/to/your/data/files")  # Add this line to load all data files
     cl.run()
 
 if __name__ == "__main__":
